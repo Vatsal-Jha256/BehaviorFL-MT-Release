@@ -1,0 +1,25 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Core ML and FL
+torch==2.4.1+cpu
+flwr[simulation]==1.13.1
+ray==2.31.0
+opacus==1.5.4
+
+# Data processing
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.13.1
+scikit-learn==1.5.2
+
+# SUMO / geospatial utilities
+sumolib==1.20.0
+requests==2.32.3
+
+# Visualization and configuration
+matplotlib==3.9.2
+PyYAML==6.0.2
+tqdm==4.67.1
+
+# Development and tests
+pytest==8.3.5

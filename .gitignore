@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.requirements.sha256
+*.tmp
+.env
+.env.*
+!.env.example
+results/multitask_smoke*/
+results/rerun/
+results/all_results_*.json
+data/processed/*behaviors*.pt
+paper/
+data/raw/

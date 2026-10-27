@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the BehaviorFL-MT paper."
+title: "BehaviorFL-MT: Federated Multi-Task Learning under Unequal Vehicle Sensors and Partial Supervision"
+type: software
+version: "1.0.0"
+date-released: "2026-10-28"
+authors:
+  - family-names: Jha
+    given-names: Vatsal
+    affiliation: Vellore Institute of Technology
+  - family-names: Bragadeshwaran
+    given-names: Ashok
+    affiliation: Vellore Institute of Technology
+repository-code: "https://github.com/Vatsal-Jha256/BehaviorFL-MT-Release"
+url: "https://github.com/Vatsal-Jha256/BehaviorFL-MT-Release"
+keywords:
+  - federated learning
+  - multi-task learning
+  - partial supervision
+  - client selection
+  - missing modalities
+  - vehicle telemetry

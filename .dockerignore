@@ -1,0 +1,12 @@
+.git
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.env
+.env.*
+results/multitask_smoke*/
+results/rerun/
+paper/
+data/raw/
+data/processed/*behaviors*.pt

@@ -1,0 +1,13 @@
+services:
+  behaviorfl-mt:
+    build: .
+    user: "${LOCAL_UID:-1000}:${LOCAL_GID:-1000}"
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+      - ./figures:/app/figures
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Full main comparison, oracle, ablations, sweeps, figures, and verification.
+    entrypoint: ["bash", "scripts/reproduce.sh"]
+    command: ["all"]

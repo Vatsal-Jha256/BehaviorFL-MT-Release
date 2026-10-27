@@ -1,0 +1,836 @@
+{
+  "method": "destination_specialist",
+  "seed": 123,
+  "n_rounds": 60,
+  "elapsed_sec": 177.2,
+  "participation_fraction": 0.02,
+  "dataset_metadata": {
+    "schema": "behaviorfl_multitask_v4",
+    "n_trips": 102843,
+    "n_input_features": 22,
+    "n_fl_clients": 5617,
+    "n_held_out_clients": 2871,
+    "sources": {
+      "geolife": 844,
+      "tdrive": 71290,
+      "ved": 30709
+    },
+    "prefix_fraction": 0.25,
+    "destination_task": {
+      "type": "region_relative_endpoint_grid",
+      "grid_size": 4,
+      "num_classes": 16,
+      "bounds": {
+        "ved": [
+          42.21,
+          42.33,
+          -83.8,
+          -83.64
+        ],
+        "geolife": [
+          39.75,
+          40.1,
+          116.2,
+          116.55
+        ],
+        "tdrive": [
+          39.75,
+          40.1,
+          116.2,
+          116.55
+        ]
+      },
+      "study_region_filter": "start, prefix endpoint, and final endpoint all in bounds",
+      "pre_filter_source_counts": {
+        "geolife": 1261,
+        "tdrive": 127663,
+        "ved": 32550
+      },
+      "excluded_source_counts": {
+        "geolife": 417,
+        "tdrive": 56373,
+        "ved": 1841
+      },
+      "distribution": [
+        1112,
+        2819,
+        4680,
+        1002,
+        4823,
+        14129,
+        15885,
+        6652,
+        4677,
+        15394,
+        13629,
+        9028,
+        1037,
+        2630,
+        3367,
+        1979
+      ]
+    },
+    "state_task": {
+      "components": [
+        "mean_rpm",
+        "mean_engine_load",
+        "maf_variability_proxy"
+      ],
+      "weights": [
+        0.4,
+        0.3,
+        0.3
+      ],
+      "center_train_median": [
+        1284.6124267578125,
+        29.174549102783203,
+        0.858748197555542
+      ],
+      "scale_train_iqr": [
+        394.4944763183594,
+        7.963740825653076,
+        0.26673510670661926
+      ],
+      "threshold_train_q75": 0.2413715803695568,
+      "fit_rows": 16826,
+      "num_classes": 2,
+      "eligible_rows": 20005,
+      "positive_rows": 5087,
+      "supervision": "VED rows with RPM, engine load, and MAF variability"
+    },
+    "split": {
+      "vehicle_disjoint": true,
+      "held_out_fraction_per_source": 0.15,
+      "seed": 42
+    },
+    "preprocessing": "fixed physical scaling; no held-out feature statistics"
+  },
+  "dataset_n_rows": 102843,
+  "dataset_n_fl_clients": 5617,
+  "eligible_training_clients": 5617,
+  "method_config": {
+    "strategy": "fedavg",
+    "poi_only": true,
+    "federate_task_heads": true,
+    "use_pcgrad": false,
+    "use_uncertainty": false,
+    "sensor_block_dropout_p": 0.0,
+    "round_evaluation": false,
+    "participation_fraction": 0.02
+  },
+  "frameworks": {
+    "model": "PyTorch",
+    "federation": "Flower",
+    "dp": "Opacus"
+  },
+  "heldout_evaluation": {
+    "scope": "pooled predictions on source-stratified held-out vehicles",
+    "n_held_out_vehicles": 2871,
+    "destination": {
+      "n": 19997,
+      "accuracy": 0.34505176544189453,
+      "macro_f1": 0.34143406717377117,
+      "balanced_accuracy": 0.3182763919294975,
+      "hr_at_1": 0.34505176544189453,
+      "hr_at_3": 0.6067410111427307,
+      "hr_at_5": 0.7509126663208008
+    },
+    "destination_by_source": {
+      "geolife": {
+        "n": 451,
+        "accuracy": 0.23059867322444916,
+        "macro_f1": 0.21793448113324113,
+        "balanced_accuracy": 0.2384848484848485,
+        "hr_at_1": 0.23059867322444916,
+        "hr_at_3": 0.6629711985588074,
+        "hr_at_5": 0.8580931425094604
+      },
+      "tdrive": {
+        "n": 15306,
+        "accuracy": 0.36534690856933594,
+        "macro_f1": 0.3766813919442258,
+        "balanced_accuracy": 0.35012611657827597,
+        "hr_at_1": 0.36534690856933594,
+        "hr_at_3": 0.608062207698822,
+        "hr_at_5": 0.7502286434173584
+      },
+      "ved": {
+        "n": 4240,
+        "accuracy": 0.2839622497558594,
+        "macro_f1": 0.21076484097938003,
+        "balanced_accuracy": 0.22534994009916254,
+        "hr_at_1": 0.2839622497558594,
+        "hr_at_3": 0.5959905385971069,
+        "hr_at_5": 0.7419811487197876
+      }
+    },
+    "destination_geometry_prior": {
+      "n": 19997,
+      "accuracy": 0.3470020592212677,
+      "macro_f1": 0.34603531531062903,
+      "balanced_accuracy": 0.3250981233992734,
+      "hr_at_1": 0.3470020592212677,
+      "hr_at_3": 0.6049407124519348,
+      "hr_at_5": 0.7491123676300049
+    },
+    "destination_geometry_prior_by_source": {
+      "geolife": {
+        "n": 451,
+        "accuracy": 0.23946784436702728,
+        "macro_f1": 0.21884026801706927,
+        "balanced_accuracy": 0.24101358411703236,
+        "hr_at_1": 0.23946784436702728,
+        "hr_at_3": 0.72062087059021,
+        "hr_at_5": 0.860310435295105
+      },
+      "tdrive": {
+        "n": 15306,
+        "accuracy": 0.36900562047958374,
+        "macro_f1": 0.3832059980086937,
+        "balanced_accuracy": 0.3582640685023747,
+        "hr_at_1": 0.36900562047958374,
+        "hr_at_3": 0.6081275343894958,
+        "hr_at_5": 0.7483339905738831
+      },
+      "ved": {
+        "n": 4240,
+        "accuracy": 0.2790094316005707,
+        "macro_f1": 0.2128785265512418,
+        "balanced_accuracy": 0.22881146193376853,
+        "hr_at_1": 0.2790094316005707,
+        "hr_at_3": 0.5811320543289185,
+        "hr_at_5": 0.7400943636894226
+      }
+    },
+    "state_natural_sensors": {
+      "n": 3174,
+      "auroc": 0.4080635928186487,
+      "auprc": 0.2390630035620765,
+      "macro_f1": 0.4639940874250498,
+      "balanced_accuracy": 0.4749638868826046,
+      "brier": 0.26627662777900696,
+      "decision_threshold": 0.535,
+      "threshold_selection": "training-client validation macro-F1",
+      "calibration_n": 3445,
+      "macro_f1_at_0_5": 0.21668311944718657
+    },
+    "state_gps_only": {
+      "n": 3174,
+      "auroc": 0.4980507349614661,
+      "auprc": 0.2882974583677843,
+      "macro_f1": 0.4977314448401706,
+      "balanced_accuracy": 0.5017347193891724,
+      "brier": 0.266562283039093,
+      "decision_threshold": 0.535,
+      "threshold_selection": "training-client validation macro-F1",
+      "calibration_n": 3445,
+      "macro_f1_at_0_5": 0.21668311944718657
+    }
+  },
+  "periodic_heldout_trajectory": {
+    "destination_macro_f1": [
+      [
+        0,
+        0.34603531531062903
+      ],
+      [
+        1,
+        0.3460021112096954
+      ],
+      [
+        5,
+        0.34521908246792055
+      ],
+      [
+        10,
+        0.34392111300550754
+      ],
+      [
+        15,
+        0.34162775946583906
+      ],
+      [
+        20,
+        0.34137461613653874
+      ],
+      [
+        25,
+        0.34065210135995405
+      ],
+      [
+        30,
+        0.3405655851606826
+      ],
+      [
+        35,
+        0.3407635794606393
+      ],
+      [
+        40,
+        0.34244357991058105
+      ],
+      [
+        45,
+        0.34140899938128183
+      ],
+      [
+        50,
+        0.34206250818424244
+      ],
+      [
+        55,
+        0.3412646980667142
+      ],
+      [
+        60,
+        0.34143406717377117
+      ]
+    ],
+    "destination_hr5": [
+      [
+        0,
+        0.7491123676300049
+      ],
+      [
+        1,
+        0.749212384223938
+      ],
+      [
+        5,
+        0.7493124008178711
+      ],
+      [
+        10,
+        0.7493124008178711
+      ],
+      [
+        15,
+        0.7504125833511353
+      ],
+      [
+        20,
+        0.7508126497268677
+      ],
+      [
+        25,
+        0.7509626150131226
+      ],
+      [
+        30,
+        0.7507126331329346
+      ],
+      [
+        35,
+        0.7504625916481018
+      ],
+      [
+        40,
+        0.7503125667572021
+      ],
+      [
+        45,
+        0.7504125833511353
+      ],
+      [
+        50,
+        0.7506126165390015
+      ],
+      [
+        55,
+        0.7507126331329346
+      ],
+      [
+        60,
+        0.7509126663208008
+      ]
+    ],
+    "state_auprc_natural": [
+      [
+        0,
+        0.2654907478809895
+      ],
+      [
+        1,
+        0.2583175408789794
+      ],
+      [
+        5,
+        0.24665305019384226
+      ],
+      [
+        10,
+        0.24488271726980698
+      ],
+      [
+        15,
+        0.23122160943359638
+      ],
+      [
+        20,
+        0.22354141721635676
+      ],
+      [
+        25,
+        0.2269175145385684
+      ],
+      [
+        30,
+        0.24334619211057043
+      ],
+      [
+        35,
+        0.2487927992705326
+      ],
+      [
+        40,
+        0.24638205154295698
+      ],
+      [
+        45,
+        0.2450483829806784
+      ],
+      [
+        50,
+        0.22455683768088663
+      ],
+      [
+        55,
+        0.24812233885261817
+      ],
+      [
+        60,
+        0.2390630035620765
+      ]
+    ],
+    "state_auprc_gps": [
+      [
+        0,
+        0.2609493442343603
+      ],
+      [
+        1,
+        0.2583288363113208
+      ],
+      [
+        5,
+        0.25534193240189007
+      ],
+      [
+        10,
+        0.2589177797287393
+      ],
+      [
+        15,
+        0.25975938371151763
+      ],
+      [
+        20,
+        0.28155167173706674
+      ],
+      [
+        25,
+        0.30418361881307177
+      ],
+      [
+        30,
+        0.2975477206394057
+      ],
+      [
+        35,
+        0.2879465046527997
+      ],
+      [
+        40,
+        0.2926005278380985
+      ],
+      [
+        45,
+        0.2933563419084625
+      ],
+      [
+        50,
+        0.27527016149426636
+      ],
+      [
+        55,
+        0.2850837990884919
+      ],
+      [
+        60,
+        0.2882974583677843
+      ]
+    ]
+  },
+  "centroid_noise_sigma": 0.0,
+  "losses": [
+    [
+      1,
+      2.3957
+    ],
+    [
+      2,
+      2.391
+    ],
+    [
+      3,
+      2.4419
+    ],
+    [
+      4,
+      2.413
+    ],
+    [
+      5,
+      2.4753
+    ],
+    [
+      6,
+      2.4029
+    ],
+    [
+      7,
+      2.3897
+    ],
+    [
+      8,
+      2.4679
+    ],
+    [
+      9,
+      2.403
+    ],
+    [
+      10,
+      2.4238
+    ],
+    [
+      11,
+      2.5188
+    ],
+    [
+      12,
+      2.3758
+    ],
+    [
+      13,
+      2.3579
+    ],
+    [
+      14,
+      2.4211
+    ],
+    [
+      15,
+      2.3767
+    ],
+    [
+      16,
+      2.4607
+    ],
+    [
+      17,
+      2.3988
+    ],
+    [
+      18,
+      2.4279
+    ],
+    [
+      19,
+      2.446
+    ],
+    [
+      20,
+      2.4052
+    ],
+    [
+      21,
+      2.3779
+    ],
+    [
+      22,
+      2.4145
+    ],
+    [
+      23,
+      2.3706
+    ],
+    [
+      24,
+      2.3725
+    ],
+    [
+      25,
+      2.3943
+    ],
+    [
+      26,
+      2.3844
+    ],
+    [
+      27,
+      2.5022
+    ],
+    [
+      28,
+      2.4174
+    ],
+    [
+      29,
+      2.4236
+    ],
+    [
+      30,
+      2.3763
+    ],
+    [
+      31,
+      2.381
+    ],
+    [
+      32,
+      2.3632
+    ],
+    [
+      33,
+      2.5075
+    ],
+    [
+      34,
+      2.3647
+    ],
+    [
+      35,
+      2.4139
+    ],
+    [
+      36,
+      2.4285
+    ],
+    [
+      37,
+      2.4241
+    ],
+    [
+      38,
+      2.3733
+    ],
+    [
+      39,
+      2.4175
+    ],
+    [
+      40,
+      2.4192
+    ],
+    [
+      41,
+      2.3326
+    ],
+    [
+      42,
+      2.385
+    ],
+    [
+      43,
+      2.3885
+    ],
+    [
+      44,
+      2.3824
+    ],
+    [
+      45,
+      2.4128
+    ],
+    [
+      46,
+      2.3583
+    ],
+    [
+      47,
+      2.3527
+    ],
+    [
+      48,
+      2.3665
+    ],
+    [
+      49,
+      2.3537
+    ],
+    [
+      50,
+      2.3904
+    ],
+    [
+      51,
+      2.3494
+    ],
+    [
+      52,
+      2.4746
+    ],
+    [
+      53,
+      2.3782
+    ],
+    [
+      54,
+      2.3962
+    ],
+    [
+      55,
+      2.3314
+    ],
+    [
+      56,
+      2.4676
+    ],
+    [
+      57,
+      2.4011
+    ],
+    [
+      58,
+      2.3897
+    ],
+    [
+      59,
+      2.3456
+    ],
+    [
+      60,
+      2.4401
+    ]
+  ],
+  "final_loss": 2.4401277163852133,
+  "n_clusters_active": [],
+  "known_state_clients": [],
+  "reserved_state_clients": [],
+  "actual_state_clients": [],
+  "state_supervised_examples": [
+    508.0,
+    164.0,
+    171.0,
+    204.0,
+    277.0,
+    159.0,
+    96.0,
+    113.0,
+    29.0,
+    301.0,
+    350.0,
+    54.0,
+    28.0,
+    293.0,
+    137.0,
+    336.0,
+    144.0,
+    557.0,
+    277.0,
+    671.0,
+    87.0,
+    196.0,
+    118.0,
+    475.0,
+    236.0,
+    239.0,
+    198.0,
+    127.0,
+    547.0,
+    74.0,
+    122.0,
+    716.0,
+    647.0,
+    545.0,
+    283.0,
+    224.0,
+    193.0,
+    116.0,
+    705.0,
+    567.0,
+    377.0,
+    91.0,
+    185.0,
+    34.0,
+    686.0,
+    698.0,
+    25.0,
+    428.0,
+    207.0,
+    248.0,
+    249.0,
+    366.0,
+    267.0,
+    361.0,
+    301.0,
+    8.0,
+    781.0,
+    339.0,
+    307.0,
+    443.0
+  ],
+  "epsilon_max": [],
+  "delta_max": [],
+  "destination_hr5": [],
+  "destination_hr3": [],
+  "destination_hr1": [],
+  "destination_mrr": [],
+  "destination_ndcg3": [],
+  "destination_ndcg5": [],
+  "destination_macro_f1": [],
+  "destination_balanced_acc": [],
+  "state_macro_f1": [],
+  "state_balanced_acc": [],
+  "state_accuracy": [],
+  "state_n_samples": [],
+  "destination_recall_class_0": [],
+  "destination_recall_class_1": [],
+  "destination_recall_class_2": [],
+  "destination_recall_class_3": [],
+  "destination_recall_class_4": [],
+  "destination_recall_class_5": [],
+  "destination_recall_class_6": [],
+  "destination_recall_class_7": [],
+  "destination_recall_class_8": [],
+  "destination_recall_class_9": [],
+  "destination_recall_class_10": [],
+  "destination_recall_class_11": [],
+  "destination_recall_class_12": [],
+  "destination_recall_class_13": [],
+  "destination_recall_class_14": [],
+  "destination_recall_class_15": [],
+  "state_recall_class_0": [],
+  "state_recall_class_1": [],
+  "final_destination_hr5": null,
+  "final_destination_hr3": null,
+  "final_destination_hr1": null,
+  "final_destination_mrr": null,
+  "final_destination_ndcg3": null,
+  "final_destination_ndcg5": null,
+  "final_destination_macro_f1": null,
+  "final_destination_balanced_acc": null,
+  "final_state_macro_f1": null,
+  "final_state_balanced_acc": null,
+  "final_state_accuracy": null,
+  "final_state_n_samples": null,
+  "final_destination_recall_class_0": null,
+  "final_destination_recall_class_1": null,
+  "final_destination_recall_class_2": null,
+  "final_destination_recall_class_3": null,
+  "final_destination_recall_class_4": null,
+  "final_destination_recall_class_5": null,
+  "final_destination_recall_class_6": null,
+  "final_destination_recall_class_7": null,
+  "final_destination_recall_class_8": null,
+  "final_destination_recall_class_9": null,
+  "final_destination_recall_class_10": null,
+  "final_destination_recall_class_11": null,
+  "final_destination_recall_class_12": null,
+  "final_destination_recall_class_13": null,
+  "final_destination_recall_class_14": null,
+  "final_destination_recall_class_15": null,
+  "final_state_recall_class_0": null,
+  "final_state_recall_class_1": null
+}

@@ -1,0 +1,516 @@
+{
+  "release": "camera-ready-v1",
+  "dataset_schema": "behaviorfl_multitask_v4",
+  "rounds": 60,
+  "participation_fraction": 0.02,
+  "training_clients": 5617,
+  "dataset_rows": 102843,
+  "heldout_clients": 2871,
+  "destination_eval_trips": 19997,
+  "state_eval_trips": 3174,
+  "periodic_rounds": [
+    0,
+    1,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60
+  ],
+  "runs": [
+    {
+      "method": "destination_specialist",
+      "seed": 7,
+      "method_config": {
+        "strategy": "fedavg",
+        "poi_only": true,
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "destination_specialist",
+      "seed": 42,
+      "method_config": {
+        "strategy": "fedavg",
+        "poi_only": true,
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "destination_specialist",
+      "seed": 123,
+      "method_config": {
+        "strategy": "fedavg",
+        "poi_only": true,
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "state_specialist",
+      "seed": 7,
+      "method_config": {
+        "strategy": "fedavg",
+        "state_only": true,
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "min_clients_per_round": 20
+      }
+    },
+    {
+      "method": "state_specialist",
+      "seed": 42,
+      "method_config": {
+        "strategy": "fedavg",
+        "state_only": true,
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "min_clients_per_round": 20
+      }
+    },
+    {
+      "method": "state_specialist",
+      "seed": 123,
+      "method_config": {
+        "strategy": "fedavg",
+        "state_only": true,
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "min_clients_per_round": 20
+      }
+    },
+    {
+      "method": "joint_no_tierdrop",
+      "seed": 7,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "joint_no_tierdrop",
+      "seed": 42,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "joint_no_tierdrop",
+      "seed": 123,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "joint_tierdrop",
+      "seed": 7,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25
+      }
+    },
+    {
+      "method": "joint_tierdrop",
+      "seed": 42,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25
+      }
+    },
+    {
+      "method": "joint_tierdrop",
+      "seed": 123,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25
+      }
+    },
+    {
+      "method": "behaviorfl_mt",
+      "seed": 7,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "behaviorfl_mt",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "behaviorfl_mt",
+      "seed": 123,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "mas",
+      "seed": 7,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0,
+        "mas_split_round": 10
+      }
+    },
+    {
+      "method": "mas",
+      "seed": 42,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0,
+        "mas_split_round": 10
+      }
+    },
+    {
+      "method": "mas",
+      "seed": 123,
+      "method_config": {
+        "strategy": "fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0,
+        "mas_split_round": 10
+      }
+    },
+    {
+      "method": "fedhca2",
+      "seed": 7,
+      "method_config": {
+        "strategy": "hetero_conflict_averse",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "fedhca2",
+      "seed": 42,
+      "method_config": {
+        "strategy": "hetero_conflict_averse",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "fedhca2",
+      "seed": 123,
+      "method_config": {
+        "strategy": "hetero_conflict_averse",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0
+      }
+    },
+    {
+      "method": "oracle_task_aware",
+      "seed": 7,
+      "method_config": {
+        "strategy": "oracle_task_aware",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "oracle_task_aware",
+      "seed": 42,
+      "method_config": {
+        "strategy": "oracle_task_aware",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "oracle_task_aware",
+      "seed": 123,
+      "method_config": {
+        "strategy": "oracle_task_aware",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "behaviorfl_mt_no_dropout",
+      "seed": 7,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "behaviorfl_mt_no_dropout",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "behaviorfl_mt_no_dropout",
+      "seed": 123,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.0,
+        "state_clients_per_round": 20
+      }
+    },
+    {
+      "method": "behaviorfl_mt_zero_fill",
+      "seed": 7,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "fill_mode": "zero"
+      }
+    },
+    {
+      "method": "behaviorfl_mt_zero_fill",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "fill_mode": "zero"
+      }
+    },
+    {
+      "method": "behaviorfl_mt_zero_fill",
+      "seed": 123,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "fill_mode": "zero"
+      }
+    },
+    {
+      "method": "behaviorfl_mt_mean_fill",
+      "seed": 7,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "fill_mode": "batch_mean"
+      }
+    },
+    {
+      "method": "behaviorfl_mt_mean_fill",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "fill_mode": "batch_mean"
+      }
+    },
+    {
+      "method": "behaviorfl_mt_mean_fill",
+      "seed": 123,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "fill_mode": "batch_mean"
+      }
+    },
+    {
+      "method": "behaviorfl_mt_no_residual",
+      "seed": 7,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_residual_bound": 0.0
+      }
+    },
+    {
+      "method": "behaviorfl_mt_no_residual",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_residual_bound": 0.0
+      }
+    },
+    {
+      "method": "behaviorfl_mt_no_residual",
+      "seed": 123,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_residual_bound": 0.0
+      }
+    },
+    {
+      "method": "behaviorfl_mt_bound05",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_residual_bound": 0.05
+      }
+    },
+    {
+      "method": "behaviorfl_mt_bound20",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_residual_bound": 0.2
+      }
+    },
+    {
+      "method": "behaviorfl_mt_scale2",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_prior_scale": 2.0
+      }
+    },
+    {
+      "method": "behaviorfl_mt_scale6",
+      "seed": 42,
+      "method_config": {
+        "strategy": "task_aware_fedavg",
+        "federate_task_heads": true,
+        "use_pcgrad": false,
+        "use_uncertainty": false,
+        "sensor_block_dropout_p": 0.25,
+        "state_clients_per_round": 20,
+        "geometry_prior_scale": 6.0
+      }
+    }
+  ]
+}
